@@ -84,7 +84,7 @@
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
-		<dependencies>
+	      <dependencies>
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
