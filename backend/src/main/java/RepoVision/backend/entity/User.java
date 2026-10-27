@@ -36,7 +36,7 @@ public class User {
     @Column(name = "github_username", nullable = false, length = 100)
     private String githubUsername;
 
-    @Column(name = "display_username" , nullable = false , length = 200)
+    @Column(name = "display_name" , nullable = false , length = 200)
     private String displayName;
 
     @Column(name = "avatar_url" , length = 500)
