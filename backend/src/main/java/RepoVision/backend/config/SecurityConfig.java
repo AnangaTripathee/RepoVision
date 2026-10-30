@@ -26,6 +26,7 @@ public class SecurityConfig {
 
     private final GithubOAuth2UserService gitHubOAuth2UserService;
 
+
     @Bean
     SecurityFilterChain securityFilterChain(
             HttpSecurity http,
