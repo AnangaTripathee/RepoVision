@@ -30,6 +30,17 @@ function LoginLoading(){
     )
 }
 
+// Only allow same-origin redirects; rejects "//evil.com", "/\evil.com", "https://evil.com", etc.
+function safeRedirectPath(next: string) {
+  try {
+    const url = new URL(next, window.location.origin);
+    if (url.origin !== window.location.origin) return "/dashboard";
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return "/dashboard";
+  }
+}
+
 const LoginContent = () => {
      const params = useSearchParams();
   const router = useRouter();
@@ -39,7 +50,7 @@ const LoginContent = () => {
 
   useEffect(() => {
     if (!isLoading && user) {
-      router.replace(next.startsWith("/") ? next : "/dashboard");
+      router.replace(safeRedirectPath(next));
     }
   }, [user, isLoading, next, router]);
 
