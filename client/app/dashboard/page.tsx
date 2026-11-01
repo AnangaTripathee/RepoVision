@@ -1,14 +1,18 @@
 "use client";
-import { useCurrentUser } from '@/hooks/use-auth';
-import React from 'react'
 
-const DashBoardPage = () => {
-  const{data:user, isLoading} = useCurrentUser()
+import { RequireAuth } from "@/components/providers/require-auth";
+import { AppShell } from "@/components/layout/app-shell";
+import { OverviewDashboard } from "@/components/dashboard/overview-dashboard";
 
-  console.log(user, isLoading)
+export default function OverviewPage() {
   return (
-    <div>DashBoardPage</div>
-  )
+    <RequireAuth>
+      <AppShell
+        title="Overview"
+        description="Workspace stats and recent repository activity"
+      >
+        <OverviewDashboard />
+      </AppShell>
+    </RequireAuth>
+  );
 }
-
-export default DashBoardPage
